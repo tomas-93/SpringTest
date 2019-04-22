@@ -3,12 +3,48 @@
  */
 package com.tomas.test;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
 
-public class AppTest {
-    @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+import com.tomas.test.entity.Usuarios;
+import com.tomas.test.respository.UsuariosRepository;
+import com.tomas.test.utils.Util;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@DataMongoTest
+@RunWith(SpringRunner.class)
+@SpringJUnitConfig(App.class)
+public class AppTest
+{
+    private static Logger logger = LoggerFactory.getLogger(AppTest.class);
+
+    @Autowired
+    private UsuariosRepository usuariosRepository;
+
+    @Test
+    public void test_insertar_datos()
+    {
+        logger.info("Test guardar datos");
+        Usuarios user = new Usuarios();
+        user.setNombre("Tomas");
+        user.setApellidos("Test1");
+        String fechaNacimiento = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate localDate = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        user.setFechaNacimiento(localDate);
+        user = this.usuariosRepository.save(user);
+        logger.info(Util.objectJson(user));
+        Assert.assertNotNull(user);
     }
+
+
+
 }

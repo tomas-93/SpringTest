@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: "mongodb+srv://user:user@devtestmongo-ola5x.mongodb.net/test?retryWrites=true"
