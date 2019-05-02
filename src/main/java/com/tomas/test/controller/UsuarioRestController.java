@@ -4,6 +4,7 @@ import com.tomas.test.entity.Usuarios;
 import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/v1/usuarios")
 public class UsuarioRestController
 {
-    //comentario test 3
-    public ResponseEntity<Usuarios> getUserById()
+    //comentario test 3 causar conflicto en ygalicia
+    public ResponseEntity<Usuarios> getUserById(String parm1, String param2)
     {
         return new ResponseEntity<>(HttpStatus.OK);
     }
