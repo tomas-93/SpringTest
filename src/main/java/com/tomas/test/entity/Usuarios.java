@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Document(value = "Usuarios")
-public class Usuarios extends ResponseTO
+public class Usuarios
 {
     @Id
     private String _id;

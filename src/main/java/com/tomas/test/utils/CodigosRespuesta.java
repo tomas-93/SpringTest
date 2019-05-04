@@ -4,18 +4,18 @@ public enum CodigosRespuesta
 {
     ERROR_GENERICO(1,"Error generico");
 
-    private int estatus;
+    private int codigoError;
     private String message;
 
-    CodigosRespuesta(int estatus, String message)
+    CodigosRespuesta(int codigoError, String message)
     {
-        this.estatus = estatus;
+        this.codigoError = codigoError;
         this.message = message;
     }
 
-    public int getEstatus()
+    public int getCodigoError()
     {
-        return estatus;
+        return codigoError;
     }
 
     public String getMessage()

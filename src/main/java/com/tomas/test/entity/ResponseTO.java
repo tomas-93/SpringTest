@@ -1,13 +1,19 @@
 package com.tomas.test.entity;
 
 import org.springframework.data.annotation.Transient;
+import org.springframework.http.HttpStatus;
 
-public class ResponseTO
+public class ResponseTO<T>
 {
     @Transient
     private int estatus;
     @Transient
-    private String message;
+    private String mensaje;
+    @Transient
+    private T body;
+    @Transient
+    private HttpStatus httpStatus;
+
 
     public int getEstatus()
     {
@@ -19,13 +25,33 @@ public class ResponseTO
         this.estatus = estatus;
     }
 
-    public String getMessage()
+    public String getMensaje()
     {
-        return message;
+        return mensaje;
     }
 
-    public void setMessage(String message)
+    public void setMensaje(String mensaje)
     {
-        this.message = message;
+        this.mensaje = mensaje;
+    }
+
+    public T getBody()
+    {
+        return body;
+    }
+
+    public void setBody(T body)
+    {
+        this.body = body;
+    }
+
+    public HttpStatus getHttpStatus()
+    {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(HttpStatus httpStatus)
+    {
+        this.httpStatus = httpStatus;
     }
 }

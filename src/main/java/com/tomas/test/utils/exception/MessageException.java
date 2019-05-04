@@ -1,17 +1,18 @@
 package com.tomas.test.utils.exception;
 
+import com.tomas.test.utils.CodigosRespuesta;
 import org.springframework.http.HttpStatus;
 
-public class MessageException extends Exception
+public class MessageException extends RuntimeException
 {
     private HttpStatus estatus;
-    private int codeError;
+    private CodigosRespuesta codeError;
 
-    public MessageException(int codeError)
+    public MessageException(CodigosRespuesta codeError)
     {
         this.codeError = codeError;
     }
-    public MessageException(HttpStatus estatus, int codeError)
+    public MessageException(HttpStatus estatus, CodigosRespuesta codeError)
     {
         this.estatus = estatus;
         this.codeError = codeError;
@@ -22,7 +23,7 @@ public class MessageException extends Exception
         return estatus;
     }
 
-    public int getCodeError()
+    public CodigosRespuesta getCodeError()
     {
         return codeError;
     }

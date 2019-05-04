@@ -6,6 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Util
 {
@@ -38,5 +42,21 @@ public class Util
 
         }
         return json;
+    }
+
+    public static String getTimeServer()
+    {
+        String timeServer = "";
+        try
+        {
+            String time = LocalTime.now().format(DateTimeFormatter.ofPattern("yyyMMddHHmmssSS"));
+            String ip = Inet4Address.getLocalHost().getHostAddress().split(".")[3];
+            timeServer = ip+time;
+        } catch (UnknownHostException e)
+        {
+            e.printStackTrace();
+        }
+
+        return timeServer;
     }
 }
