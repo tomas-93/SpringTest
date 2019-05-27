@@ -1,57 +1,20 @@
 package com.tomas.test.entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.Transient;
 import org.springframework.http.HttpStatus;
 
-public class ResponseTO<T>
+@Data
+public class ResponseTO
 {
     @Transient
-    private int estatus;
+    private int codigoRespuesta;
+    @Transient
+    private int codigoHttp;
     @Transient
     private String mensaje;
     @Transient
-    private T body;
-    @Transient
     private HttpStatus httpStatus;
-
-
-    public int getEstatus()
-    {
-        return estatus;
-    }
-
-    public void setEstatus(int estatus)
-    {
-        this.estatus = estatus;
-    }
-
-    public String getMensaje()
-    {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje)
-    {
-        this.mensaje = mensaje;
-    }
-
-    public T getBody()
-    {
-        return body;
-    }
-
-    public void setBody(T body)
-    {
-        this.body = body;
-    }
-
-    public HttpStatus getHttpStatus()
-    {
-        return httpStatus;
-    }
-
-    public void setHttpStatus(HttpStatus httpStatus)
-    {
-        this.httpStatus = httpStatus;
-    }
+    @Transient
+    private String folio;
 }

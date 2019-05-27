@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -49,9 +50,16 @@ public class Util
         String timeServer = "";
         try
         {
-            String time = LocalTime.now().format(DateTimeFormatter.ofPattern("yyyMMddHHmmssSS"));
-            String ip = Inet4Address.getLocalHost().getHostAddress().split(".")[3];
+            String time = LocalDate.now().getYear()
+                                + "" + LocalDate.now().getMonthValue()
+                                + "" + LocalDate.now().getDayOfMonth()
+                                + "" + LocalTime.now().getHour()
+                                + "" + LocalTime.now().getMinute()
+                                + "" + LocalTime.now().getSecond()
+                                + "" + LocalTime.now().getNano();
+            String ip = Inet4Address.getLocalHost().getHostAddress().split("\\.")[3];
             timeServer = ip+time;
+            logger.info("Folio: "+timeServer);
         } catch (UnknownHostException e)
         {
             e.printStackTrace();
